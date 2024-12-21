@@ -56,6 +56,7 @@ const CreateRepresentative = (_a) => __awaiter(void 0, [_a], void 0, function* (
     }
 });
 exports.CreateRepresentative = CreateRepresentative;
+// Doctor data validation and push to database
 const create_doctor = (doctor_details_1, ...args_1) => __awaiter(void 0, [doctor_details_1, ...args_1], void 0, function* (doctor_details, role = "doctor") {
     try {
         if (!doctor_details.name ||
@@ -69,7 +70,8 @@ const create_doctor = (doctor_details_1, ...args_1) => __awaiter(void 0, [doctor
             !doctor_details.address ||
             !doctor_details.email ||
             !doctor_details.password) {
-            throw new Error("Invalid input");
+            // throw new Error("Invalid input");
+            return "invalid input";
         }
         const doctor = yield Client.doctor.create({
             data: {
@@ -92,7 +94,7 @@ const create_doctor = (doctor_details_1, ...args_1) => __awaiter(void 0, [doctor
     }
     catch (error) {
         console.error("Error creating doctor account:", error.message || error);
-        throw error; // Rethrow or handle appropriately
+        return { error: "Failed to create doctor account", details: error.message };
     }
 });
 exports.create_doctor = create_doctor;

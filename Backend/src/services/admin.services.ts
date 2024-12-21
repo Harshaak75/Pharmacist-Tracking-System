@@ -18,6 +18,22 @@ interface RepresentativeType {
   role?: string;
 }
 
+interface doctorType {
+  name: string;
+  gender: string;
+  date_of_birth: string,
+  qualification: string;
+  year_of_expirened: number;
+  licence_number: string
+  hospital_name: string;
+  speciality: string;
+  address: string;
+  phone_number: string;
+  email: string;
+  password: string;
+  role? : string;
+}
+
 // admin data validate
 
 export const LoginAdmin = async ({ employeeId, password }: admintype) => {
@@ -81,7 +97,9 @@ export const CreateRepresentative = async ({
   }
 };
 
-export const create_doctor = async (doctor_details: any, role = "doctor") => {
+// Doctor data validation and push to database
+
+export const create_doctor = async (doctor_details: doctorType, role = "doctor") => {
   try {
     if (
       !doctor_details.name ||
@@ -96,7 +114,8 @@ export const create_doctor = async (doctor_details: any, role = "doctor") => {
       !doctor_details.email ||
       !doctor_details.password
     ) {
-      throw new Error("Invalid input");
+      // throw new Error("Invalid input");
+      return "invalid input"
     }
 
     const doctor = await Client.doctor.create({
@@ -120,6 +139,6 @@ export const create_doctor = async (doctor_details: any, role = "doctor") => {
     return doctor;
   } catch (error: any) {
     console.error("Error creating doctor account:", error.message || error);
-    throw error; // Rethrow or handle appropriately
+    return { error: "Failed to create doctor account", details: error.message };
   }
 };

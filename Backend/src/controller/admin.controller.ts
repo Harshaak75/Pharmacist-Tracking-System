@@ -62,6 +62,8 @@ export const Create_Representative_Account = async (
   }
 };
 
+// Doctor create account logic
+
 export const create_doctor_account = async (
   req: Request,
   res: Response,

@@ -55,6 +55,7 @@ const Create_Representative_Account = (req, res, next) => __awaiter(void 0, void
     }
 });
 exports.Create_Representative_Account = Create_Representative_Account;
+// Doctor create account logic
 const create_doctor_account = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const error = (0, express_validator_1.validationResult)(req);
     if (!error.isEmpty()) {

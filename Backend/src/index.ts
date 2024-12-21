@@ -1,5 +1,6 @@
 import express from "express";
-import adminRouter from "./router/admin.routes"
+import adminRouter from "./router/admin.routes";
+import representativeRouter  from "./router/representative.routes";
 
 const app = express();
 
@@ -11,5 +12,7 @@ app.get("/", (req,res) =>{
 })
 
 app.use("/admin",adminRouter) // admin routes
+
+app.use("/representative", representativeRouter)
 
 export default app;

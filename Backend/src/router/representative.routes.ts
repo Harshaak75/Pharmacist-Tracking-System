@@ -1,42 +1,16 @@
 import express from "express";
-import { body } from "express-validator";
-import {
-    create_doctor_account,
-  Create_Representative_Account,
-  loginAdmin,
-} from "../controller/admin.controller";
+import {body} from "express-validator";
+import { loginRepresentateive } from "../controller/representative.controller";
+import { create_doctor_account } from "../controller/admin.controller";
 
 const router = express.Router();
 
-// admin login routes
-
-router.post(
-  "/login",
-  [
-    body("employeeId").notEmpty().withMessage("Enter your employee number"),
-    body("password").notEmpty().withMessage("enter valid password"),
-  ],
-  loginAdmin
-);
-
-// Representative Create routes
-
-router.post(
-  "/create/rep",
-  [
-    body("name").notEmpty().withMessage("Enter your employee name"),
-    body("employeeid").notEmpty().withMessage("Enter your employee Id"),
-    body("email").isEmail().withMessage("enter valid email"),
-    body("password").notEmpty().withMessage("enter valid password"),
-    body("phone_number")
-      .notEmpty()
-      .withMessage("Enter phone number")
-    // body("role").notEmpty().withMessage("select your role")
-  ],
-  Create_Representative_Account
-);
-
-// Create Doctor account routes
+router.post("/login",[
+    body("employeeid").notEmpty().withMessage("Enter your employeeId"),
+    body("password").notEmpty().withMessage("Enter your password")
+],
+loginRepresentateive,
+)
 
 router.post("/create/doctor",[
     body("name").notEmpty().withMessage("Enter your employee name"),

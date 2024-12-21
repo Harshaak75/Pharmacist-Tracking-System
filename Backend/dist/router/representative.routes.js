@@ -5,25 +5,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const express_validator_1 = require("express-validator");
+const representative_controller_1 = require("../controller/representative.controller");
 const admin_controller_1 = require("../controller/admin.controller");
 const router = express_1.default.Router();
-// admin login routes
 router.post("/login", [
-    (0, express_validator_1.body)("employeeId").notEmpty().withMessage("Enter your employee number"),
-    (0, express_validator_1.body)("password").notEmpty().withMessage("enter valid password"),
-], admin_controller_1.loginAdmin);
-// Representative Create routes
-router.post("/create/rep", [
-    (0, express_validator_1.body)("name").notEmpty().withMessage("Enter your employee name"),
-    (0, express_validator_1.body)("employeeid").notEmpty().withMessage("Enter your employee Id"),
-    (0, express_validator_1.body)("email").isEmail().withMessage("enter valid email"),
-    (0, express_validator_1.body)("password").notEmpty().withMessage("enter valid password"),
-    (0, express_validator_1.body)("phone_number")
-        .notEmpty()
-        .withMessage("Enter phone number")
-    // body("role").notEmpty().withMessage("select your role")
-], admin_controller_1.Create_Representative_Account);
-// Create Doctor account routes
+    (0, express_validator_1.body)("employeeid").notEmpty().withMessage("Enter your employeeId"),
+    (0, express_validator_1.body)("password").notEmpty().withMessage("Enter your password")
+], representative_controller_1.loginRepresentateive);
 router.post("/create/doctor", [
     (0, express_validator_1.body)("name").notEmpty().withMessage("Enter your employee name"),
     (0, express_validator_1.body)("gender").notEmpty().withMessage("Enter your gender"),

@@ -1,1 +1,1 @@
-{"root":["./src/config.ts","./src/index.ts","./src/server.ts","./src/controller/admin.controller.ts","./src/db/db1.ts","./src/router/admin.routes.ts","./src/services/admin.services.ts"],"version":"5.7.2"}
+{"root":["./src/config.ts","./src/index.ts","./src/server.ts","./src/controller/admin.controller.ts","./src/controller/representative.controller.ts","./src/db/db1.ts","./src/router/admin.routes.ts","./src/router/representative.routes.ts","./src/services/admin.services.ts","./src/services/representative.services.ts"],"version":"5.7.2"}
