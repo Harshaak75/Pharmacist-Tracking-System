@@ -1,5 +1,4 @@
 import './App.css'
-import { backend_url } from './config'
 import { Dashboard } from './pages/Dashboard'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { DoctorForm } from './pages/DoctorDetails'
