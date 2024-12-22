@@ -1,4 +1,4 @@
-import { Sidebars } from "../components/Sidebars";
+
 import { CartDownArror } from "../icons/cartDownArrow";
 import { DoctorIcon } from "../icons/Doctor";
 import { Person } from "../icons/Person";
