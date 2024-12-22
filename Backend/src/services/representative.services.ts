@@ -22,3 +22,37 @@ export const isRepresentaivePresent = async ({employeeid, password}: any)=>{
         console.log("error retrieving employee data", error);
     }
 }
+
+interface ActivityType {
+    representative_name: string;
+    doctor_name: string;
+    date: string;
+    product_name: string;
+    latitude: number,
+    longitude: number,
+}
+
+export const createActivity = async ({representative_name, doctor_name, date, product_name, latitude, longitude}: ActivityType) =>{
+
+    // console.log(representative_name,doctor_name, date, product_name)
+    if(!representative_name || !doctor_name || !date || !product_name || !latitude || !longitude){
+        throw new Error("Invalid input");
+    }
+
+    try {
+        const createActivity = await Client.activity.create({
+            data: {
+                representative_name: representative_name,
+                doctor_name: doctor_name,
+                date: new Date(date),
+                product_promoted: product_name,
+                latitude: latitude,
+                longitude: longitude,
+            }
+        })
+
+        return createActivity;
+    } catch (error: any) {
+        console.log("error creating the activity", error);
+    }
+}

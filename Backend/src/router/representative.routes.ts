@@ -1,6 +1,6 @@
 import express from "express";
 import {body} from "express-validator";
-import { loginRepresentateive } from "../controller/representative.controller";
+import { loginRepresentateive, SubmitDailyActivity } from "../controller/representative.controller";
 import { create_doctor_account } from "../controller/admin.controller";
 
 const router = express.Router();
@@ -31,6 +31,17 @@ router.post("/create/doctor",[
     // body("role").notEmpty().withMessage("select your role")
   ],
   create_doctor_account,
+)
+
+router.post("/create/DailyActivity",[
+  body("representative_name").notEmpty().withMessage("Enter your employee name"),
+    body("doctor_name").notEmpty().withMessage("Enter doctor name"),
+    body("date").notEmpty().withMessage("Enter your date of birth"),
+    body("product_name").notEmpty().withMessage("Enter product_name"),
+    body("latitude").notEmpty().withMessage("Enter latitude"),
+    body("longitude").notEmpty().withMessage("Enter longitude"),
+],
+SubmitDailyActivity,
 )
 
 export default router;

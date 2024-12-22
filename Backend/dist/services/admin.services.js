@@ -80,7 +80,7 @@ const create_doctor = (doctor_details_1, ...args_1) => __awaiter(void 0, [doctor
                 password: doctor_details.password,
                 phone_number: doctor_details.phone_number,
                 speciality: doctor_details.speciality,
-                year_of_expirened: doctor_details.year_of_expirened,
+                year_of_expirened: Number(doctor_details.year_of_expirened),
                 gender: doctor_details.gender,
                 date_of_birth: new Date(doctor_details.date_of_birth),
                 qualification: doctor_details.qualification,

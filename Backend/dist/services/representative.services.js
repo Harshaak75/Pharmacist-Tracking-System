@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isRepresentaivePresent = void 0;
+exports.createActivity = exports.isRepresentaivePresent = void 0;
 const client_1 = require("@prisma/client");
 const Client = new client_1.PrismaClient();
 const isRepresentaivePresent = (_a) => __awaiter(void 0, [_a], void 0, function* ({ employeeid, password }) {
@@ -32,3 +32,26 @@ const isRepresentaivePresent = (_a) => __awaiter(void 0, [_a], void 0, function*
     }
 });
 exports.isRepresentaivePresent = isRepresentaivePresent;
+const createActivity = (_a) => __awaiter(void 0, [_a], void 0, function* ({ representative_name, doctor_name, date, product_name, latitude, longitude }) {
+    // console.log(representative_name,doctor_name, date, product_name)
+    if (!representative_name || !doctor_name || !date || !product_name || !latitude || !longitude) {
+        throw new Error("Invalid input");
+    }
+    try {
+        const createActivity = yield Client.activity.create({
+            data: {
+                representative_name: representative_name,
+                doctor_name: doctor_name,
+                date: new Date(date),
+                product_promoted: product_name,
+                latitude: latitude,
+                longitude: longitude,
+            }
+        });
+        return createActivity;
+    }
+    catch (error) {
+        console.log("error creating the activity", error);
+    }
+});
+exports.createActivity = createActivity;

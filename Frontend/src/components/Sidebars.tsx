@@ -1,14 +1,14 @@
+import { useState } from "react";
 import { Mainlogo } from "../icons/Mainlogo";
 import { SidebarItems } from "./sidebar.items";
 import { useNavigate } from "react-router-dom";
 
 export function Sidebars() {
-
   const navigate = useNavigate();
 
   const formatRoute = (item: string) => item.replace(/ /g, "-");
 
-
+  const [selctedItem, setSelectedItem] = useState<string | null>(null);
 
   const sidebarItems = [
     "Dashboard",
@@ -31,9 +31,16 @@ export function Sidebars() {
       <div className="box flex justify-center items-center mt-8">
         <div className="flex flex-col gap-1 ">
           {sidebarItems.map((items, key) => (
-            <SidebarItems ItemName={items} key={key} called={()=>{
-              navigate(`/${formatRoute(items)}`)
-            }} style="p-2" />
+            <SidebarItems
+              ItemName={items}
+              key={key}
+              called={() => {
+                setSelectedItem(items);
+                navigate(`/${formatRoute(items)}`);
+              }}
+              style="p-2"
+              selected={selctedItem == items}
+            />
           ))}
         </div>
       </div>

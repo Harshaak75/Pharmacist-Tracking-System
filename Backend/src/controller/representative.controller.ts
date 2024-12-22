@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
-import { isRepresentaivePresent } from "../services/representative.services";
+import { createActivity, isRepresentaivePresent } from "../services/representative.services";
 import bcrypt from "bcrypt"
 
 
@@ -33,4 +33,22 @@ export const loginRepresentateive = async (req: Request, res: Response, next: Ne
     } catch (error: any) {
         return res.json(error)
     }
+}
+
+export const SubmitDailyActivity = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const error = validationResult(req);
+
+  if (!error.isEmpty()) {
+    return res.status(400).json({ errors: error.array() });
+  }
+
+  try {
+    const {representative_name, doctor_name, date, product_name, latitude,longitude} = req.body;
+
+    const Activity = await createActivity({representative_name, doctor_name, date, product_name, latitude,longitude});
+
+    res.status(200).json(Activity);
+  } catch (error: any) {
+    res.status(500).json(error.message);
+  }
 }

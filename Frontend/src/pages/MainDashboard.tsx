@@ -8,8 +8,9 @@ export function MainDashboard() {
       <div className="">
         <Sidebars />
       </div>
-      <div className="ml-64 overflow-hidden"><Outlet /></div>
-      
+      <div className="ml-64 overflow-hidden">
+        <Outlet />
+      </div>
     </div>
   );
 }

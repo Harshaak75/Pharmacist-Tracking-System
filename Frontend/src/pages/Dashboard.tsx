@@ -25,7 +25,6 @@ export function Dashboard() {
 
   return (
     <div className="bg-gray-100 h-[100vh]">
-
       <div className="ml-64 flex justify-end p-3">
         <div className="flex justify-center items-center gap-3">
           <div className="user_photo w-11 h-11 rounded-full bg-red-300"></div>

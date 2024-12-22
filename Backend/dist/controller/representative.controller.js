@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loginRepresentateive = void 0;
+exports.SubmitDailyActivity = exports.loginRepresentateive = void 0;
 const express_validator_1 = require("express-validator");
 const representative_services_1 = require("../services/representative.services");
 const bcrypt_1 = __importDefault(require("bcrypt"));
@@ -40,3 +40,18 @@ const loginRepresentateive = (req, res, next) => __awaiter(void 0, void 0, void 
     }
 });
 exports.loginRepresentateive = loginRepresentateive;
+const SubmitDailyActivity = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const error = (0, express_validator_1.validationResult)(req);
+    if (!error.isEmpty()) {
+        return res.status(400).json({ errors: error.array() });
+    }
+    try {
+        const { representative_name, doctor_name, date, product_name, latitude, longitude } = req.body;
+        const Activity = yield (0, representative_services_1.createActivity)({ representative_name, doctor_name, date, product_name, latitude, longitude });
+        res.status(200).json(Activity);
+    }
+    catch (error) {
+        res.status(500).json(error.message);
+    }
+});
+exports.SubmitDailyActivity = SubmitDailyActivity;

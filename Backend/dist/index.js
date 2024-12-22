@@ -6,9 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const admin_routes_1 = __importDefault(require("./router/admin.routes"));
 const representative_routes_1 = __importDefault(require("./router/representative.routes"));
+const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
+app.use((0, cors_1.default)());
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to the API!" });
 });

@@ -29,4 +29,12 @@ router.post("/create/doctor", [
     (0, express_validator_1.body)("password").notEmpty().withMessage("enter valid password"),
     // body("role").notEmpty().withMessage("select your role")
 ], admin_controller_1.create_doctor_account);
+router.post("/create/DailyActivity", [
+    (0, express_validator_1.body)("representative_name").notEmpty().withMessage("Enter your employee name"),
+    (0, express_validator_1.body)("doctor_name").notEmpty().withMessage("Enter doctor name"),
+    (0, express_validator_1.body)("date").notEmpty().withMessage("Enter your date of birth"),
+    (0, express_validator_1.body)("product_name").notEmpty().withMessage("Enter product_name"),
+    (0, express_validator_1.body)("latitude").notEmpty().withMessage("Enter latitude"),
+    (0, express_validator_1.body)("longitude").notEmpty().withMessage("Enter longitude"),
+], representative_controller_1.SubmitDailyActivity);
 exports.default = router;
