@@ -1,4 +1,4 @@
-import React, { useRef} from "react";
+import React, { useRef, useState} from "react";
 import { Input } from "../components/input";
 import { Button } from "../components/Button";
 import axios from "axios";
@@ -19,10 +19,14 @@ export function DoctorForm() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
+  const [disable, setdisable] = useState(false);
+
   async function submit(event: React.FormEvent){
     // TODO: Implement form submission logic
 
     event.preventDefault();
+
+    setdisable(true);
 
     const formData = {
       name: nameRef.current?.value,
@@ -82,6 +86,8 @@ export function DoctorForm() {
           }
         }
       });
+
+      setdisable(false);
     
       // Show a success alert
       alert('Created');
@@ -217,6 +223,7 @@ export function DoctorForm() {
           {/* Submit Button */}
           <div className="md:col-span-2 flex justify-center">
             <Button
+            disable={disable}
               type="submit"
               style="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700"
               title="Register Doctor"
