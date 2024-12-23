@@ -3,7 +3,7 @@ import { Input } from "../components/input";
 
 export function Contact() {
   return (
-    <div className="flex justify-center p-4 items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center p-4 items-center min-h-screen bg-gray-100 lg:ml-64">
       <div className="w-full max-w-lg sm:max-w-2xl lg:max-w-4xl bg-white shadow-lg rounded-lg p-6 sm:p-8">
         <h2 className="text-xl sm:text-2xl font-semibold text-green-600 mb-4 sm:mb-6 text-center">
           Contact Us

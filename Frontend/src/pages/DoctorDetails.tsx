@@ -99,15 +99,12 @@ export function DoctorForm() {
 
 
   return (
-    <div className="flex justify-center p-4 items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-xl md:max-w-4xl bg-white shadow-lg rounded-lg p-8">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 lg:ml-64 p-4 xl:ml-64">
+      <div className="w-full max-w-screen-md bg-white shadow-lg rounded-lg p-6 md:p-8">
         <h2 className="text-2xl font-semibold text-green-600 mb-6 text-center">
           Doctor Registration
         </h2>
-        <form
-          className="grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-2"
-          onSubmit={submit}
-        >
+        <form className="grid grid-cols-1 gap-6 md:grid-cols-2" onSubmit={submit}>
           {/* Name */}
           <Input
             reff={nameRef}
@@ -134,12 +131,7 @@ export function DoctorForm() {
           </div>
 
           {/* Date of Birth */}
-          <Input
-            reff={dobRef}
-            type="date"
-            name="date_of_birth"
-            label="Date of Birth"
-          />
+          <Input reff={dobRef} type="date" name="date_of_birth" label="Date of Birth" />
 
           {/* Qualification */}
           <Input
@@ -223,7 +215,7 @@ export function DoctorForm() {
           />
 
           {/* Submit Button */}
-          <div className="sm:col-span-2 flex justify-center">
+          <div className="md:col-span-2 flex justify-center">
             <Button
               type="submit"
               style="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700"

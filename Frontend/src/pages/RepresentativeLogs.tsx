@@ -94,98 +94,93 @@ export function RepresentativeLogs() {
   }
 
   return (
-    <div className="flex justify-center p-4 items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 sm:p-8">
-        <h2 className="text-2xl font-semibold text-green-600 mb-6 text-center">
-          Daily Activity Submission
-        </h2>
-        <form
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2"
-          onSubmit={submit}
+    <div className="flex justify-center p-4 items-center min-h-screen bg-gray-100 lg:ml-64">
+  <div className="w-full max-w-3xl bg-white shadow-lg rounded-lg p-6 sm:p-8">
+    <h2 className="text-2xl font-semibold text-green-600 mb-6 text-center">
+      Daily Activity Submission
+    </h2>
+    <form className="grid grid-cols-1 gap-6 sm:grid-cols-2" onSubmit={submit}>
+      {/* Name */}
+      <Input
+        reff={nameRef}
+        type="text"
+        name="name"
+        placeholder="Enter representative name"
+        label="Name"
+      />
+
+      {/* Date */}
+      <Input reff={dateRef} type="date" name="date" label="Date" />
+
+      {/* Doctor's Name */}
+      <Input
+        reff={doctor_nameRef}
+        type="text"
+        name="doctor"
+        placeholder="Enter doctor's name"
+        label="Doctor Name"
+      />
+
+      {/* Products Promoted */}
+      <div>
+        <label className="text-green-600">Products Promoted</label>
+        <select
+          ref={Product_PromotedRef}
+          name="product"
+          className="w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-green-200"
+          required
         >
-          {/* Name */}
-          <Input
-            reff={nameRef}
-            type="text"
-            name="name"
-            placeholder="Enter representative name"
-            label="Name"
-          />
-
-          {/* Date */}
-          <Input reff={dateRef} type="date" name="date" label="Date" />
-
-          {/* Doctor's Name */}
-          <Input
-            reff={doctor_nameRef}
-            type="text"
-            name="doctor"
-            placeholder="Enter doctor's name"
-            label="Doctor Name"
-          />
-
-          {/* Products Promoted */}
-          <div>
-            <label className="text-green-600">Products Promoted</label>
-            <select
-              ref={Product_PromotedRef}
-              name="product"
-              className="w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-green-200"
-              required
-            >
-              <option value="">Select Products</option>
-              <option value="Dolo 650 Tablet">Dolo 650 Tablet</option>
-              <option value="Sumo L 650 Tablet">Sumo L 650 Tablet</option>
-              <option value="Xykaa Rapid 650 Tablet">
-                Xykaa Rapid 650 Tablet
-              </option>
-              <option value="Dolomed 650mg Tablet">Dolomed 650mg Tablet</option>
-              <option value="CP 650mg Tablet">CP 650mg Tablet</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          {/* Map */}
-          <div className="w-full sm:col-span-2 z-20">
-            <div className="text-green-600 pb-1">Current Location</div>
-            <div className="w-full h-64 rounded-lg overflow-hidden">
-              {currentPositon ? (
-                <MapContainer
-                  center={currentPositon}
-                  zoom={13}
-                  scrollWheelZoom={true}
-                  className="h-full w-full"
-                >
-                  <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                  <Marker position={currentPositon}>
-                    <Popup>Current Location</Popup>
-                  </Marker>
-                </MapContainer>
-              ) : (
-                <p>Getting location...</p>
-              )}
-            </div>
-          </div>
-
-          {/* Image Upload */}
-          <Input
-            type="file"
-            name="image"
-            placeholder="Upload your image"
-            label="Upload your image"
-          />
-
-          {/* Submit Button */}
-          <div className="sm:col-span-2 flex justify-center">
-            <Button
-              onclick={submit}
-              type="submit"
-              style="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700"
-              title="Submit Activity"
-            />
-          </div>
-        </form>
+          <option value="">Select Products</option>
+          <option value="Dolo 650 Tablet">Dolo 650 Tablet</option>
+          <option value="Sumo L 650 Tablet">Sumo L 650 Tablet</option>
+          <option value="Xykaa Rapid 650 Tablet">Xykaa Rapid 650 Tablet</option>
+          <option value="Dolomed 650mg Tablet">Dolomed 650mg Tablet</option>
+          <option value="CP 650mg Tablet">CP 650mg Tablet</option>
+          <option value="other">Other</option>
+        </select>
       </div>
-    </div>
+
+      {/* Map */}
+      <div className="w-full sm:col-span-2 z-20">
+        <div className="text-green-600 pb-1">Current Location</div>
+        <div className="w-full h-64 rounded-lg overflow-hidden">
+          {currentPositon ? (
+            <MapContainer
+              center={currentPositon}
+              zoom={13}
+              scrollWheelZoom={true}
+              className="h-full w-full"
+            >
+              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+              <Marker position={currentPositon}>
+                <Popup>Current Location</Popup>
+              </Marker>
+            </MapContainer>
+          ) : (
+            <p>Getting location...</p>
+          )}
+        </div>
+      </div>
+
+      {/* Image Upload */}
+      <Input
+        type="file"
+        name="image"
+        placeholder="Upload your image"
+        label="Upload your image"
+      />
+
+      {/* Submit Button */}
+      <div className="sm:col-span-2 flex justify-center">
+        <Button
+          onclick={submit}
+          type="submit"
+          style="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700"
+          title="Submit Activity"
+        />
+      </div>
+    </form>
+  </div>
+</div>
   );
 }
