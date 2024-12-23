@@ -95,42 +95,41 @@ export function RepresentativeLogs() {
 
   return (
     <div className="flex justify-center p-4 items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-8">
+      <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 sm:p-8">
         <h2 className="text-2xl font-semibold text-green-600 mb-6 text-center">
           Daily Activity Submission
         </h2>
-        <form className="grid grid-cols-1 gap-6 sm:grid-cols-2" onSubmit={submit}>
+        <form
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2"
+          onSubmit={submit}
+        >
           {/* Name */}
-
           <Input
-          reff={nameRef}
+            reff={nameRef}
             type="text"
             name="name"
             placeholder="Enter representative name"
             label="Name"
           />
 
-          {/* Date of Birth */}
+          {/* Date */}
+          <Input reff={dateRef} type="date" name="date" label="Date" />
 
-          <Input reff={dateRef} type="date" name="date_of_birth" label="Date" />
-
-          {/* Qualification */}
-
+          {/* Doctor's Name */}
           <Input
-          reff={doctor_nameRef}
+            reff={doctor_nameRef}
             type="text"
             name="doctor"
             placeholder="Enter doctor's name"
             label="Doctor Name"
           />
 
-          {/* Year of Experience */}
-
+          {/* Products Promoted */}
           <div>
             <label className="text-green-600">Products Promoted</label>
             <select
               ref={Product_PromotedRef}
-              name="gender"
+              name="product"
               className="w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-green-200"
               required
             >
@@ -146,43 +145,40 @@ export function RepresentativeLogs() {
             </select>
           </div>
 
-          {/* <Input type="text" name="location" placeholder="Enter location" label="Location"/> */}
-
           {/* Map */}
-
-          <div className="w-64 h-64 rounded-lg mb-5">
+          <div className="w-full sm:col-span-2 z-20">
             <div className="text-green-600 pb-1">Current Location</div>
-            {currentPositon ? (
-              <MapContainer
-                center={currentPositon}
-                zoom={13}
-                scrollWheelZoom={true}
-                // style={{ height: "100%", width: "100%" }}
-                className="h-full w-full rounded-lg"
-              >
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                <Marker position={currentPositon}>
-                  <Popup>Current Location</Popup>
-                </Marker>
-              </MapContainer>
-            ) : (
-              <p>Getting location...</p>
-            )}
+            <div className="w-full h-64 rounded-lg overflow-hidden">
+              {currentPositon ? (
+                <MapContainer
+                  center={currentPositon}
+                  zoom={13}
+                  scrollWheelZoom={true}
+                  className="h-full w-full"
+                >
+                  <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                  <Marker position={currentPositon}>
+                    <Popup>Current Location</Popup>
+                  </Marker>
+                </MapContainer>
+              ) : (
+                <p>Getting location...</p>
+              )}
+            </div>
           </div>
 
-          {/* image */}
-
+          {/* Image Upload */}
           <Input
             type="file"
             name="image"
-            placeholder="Upload yout image"
+            placeholder="Upload your image"
             label="Upload your image"
           />
 
           {/* Submit Button */}
           <div className="sm:col-span-2 flex justify-center">
             <Button
-            onclick={submit}
+              onclick={submit}
               type="submit"
               style="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700"
               title="Submit Activity"

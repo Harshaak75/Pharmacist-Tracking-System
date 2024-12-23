@@ -100,13 +100,15 @@ export function DoctorForm() {
 
   return (
     <div className="flex justify-center p-4 items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-8">
+      <div className="w-full max-w-xl md:max-w-4xl bg-white shadow-lg rounded-lg p-8">
         <h2 className="text-2xl font-semibold text-green-600 mb-6 text-center">
           Doctor Registration
         </h2>
-        <form className="grid grid-cols-1 gap-6 sm:grid-cols-2" onSubmit={submit}>
+        <form
+          className="grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-2"
+          onSubmit={submit}
+        >
           {/* Name */}
-
           <Input
             reff={nameRef}
             type="text"
@@ -132,13 +134,16 @@ export function DoctorForm() {
           </div>
 
           {/* Date of Birth */}
-
-          <Input reff={dobRef} type="date" name="date_of_birth" label="Date of Birth" />
+          <Input
+            reff={dobRef}
+            type="date"
+            name="date_of_birth"
+            label="Date of Birth"
+          />
 
           {/* Qualification */}
-
           <Input
-          reff={qualificationRef}
+            reff={qualificationRef}
             type="text"
             name="qualification"
             placeholder="Enter qualification"
@@ -146,9 +151,8 @@ export function DoctorForm() {
           />
 
           {/* Year of Experience */}
-
           <Input
-          reff={experienceRef}
+            reff={experienceRef}
             type="number"
             name="year_of_experience"
             placeholder="Enter years of experience"
@@ -156,9 +160,8 @@ export function DoctorForm() {
           />
 
           {/* Licence Number */}
-
           <Input
-          reff={licenceRef}
+            reff={licenceRef}
             type="text"
             name="licence_number"
             placeholder="Enter licence number"
@@ -166,9 +169,8 @@ export function DoctorForm() {
           />
 
           {/* Hospital Name */}
-
           <Input
-          reff={hospitalRef}
+            reff={hospitalRef}
             type="text"
             name="hospital_name"
             placeholder="Enter hospital name"
@@ -176,9 +178,8 @@ export function DoctorForm() {
           />
 
           {/* Speciality */}
-
           <Input
-          reff={specialityRef}
+            reff={specialityRef}
             type="text"
             name="speciality"
             placeholder="Enter speciality"
@@ -186,9 +187,8 @@ export function DoctorForm() {
           />
 
           {/* Address */}
-
           <Input
-          reff={addressRef}
+            reff={addressRef}
             type="text"
             name="address"
             placeholder="Enter address"
@@ -196,9 +196,8 @@ export function DoctorForm() {
           />
 
           {/* Phone Number */}
-
           <Input
-          reff={phoneRef}
+            reff={phoneRef}
             type="text"
             name="phone_number"
             placeholder="Enter phone number"
@@ -206,9 +205,8 @@ export function DoctorForm() {
           />
 
           {/* Email */}
-
           <Input
-          reff={emailRef}
+            reff={emailRef}
             type="email"
             name="email"
             placeholder="Enter email"
@@ -216,9 +214,8 @@ export function DoctorForm() {
           />
 
           {/* Password */}
-
           <Input
-          reff={passwordRef}
+            reff={passwordRef}
             type="password"
             name="password"
             placeholder="Enter password"
@@ -228,7 +225,6 @@ export function DoctorForm() {
           {/* Submit Button */}
           <div className="sm:col-span-2 flex justify-center">
             <Button
-            onclick={submit}
               type="submit"
               style="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700"
               title="Register Doctor"

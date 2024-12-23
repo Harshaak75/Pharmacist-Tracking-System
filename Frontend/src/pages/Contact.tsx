@@ -4,13 +4,12 @@ import { Input } from "../components/input";
 export function Contact() {
   return (
     <div className="flex justify-center p-4 items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-8">
-        <h2 className="text-2xl font-semibold text-green-600 mb-6 text-center">
+      <div className="w-full max-w-lg sm:max-w-2xl lg:max-w-4xl bg-white shadow-lg rounded-lg p-6 sm:p-8">
+        <h2 className="text-xl sm:text-2xl font-semibold text-green-600 mb-4 sm:mb-6 text-center">
           Contact Us
         </h2>
-        <form className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <form className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
           {/* Name */}
-
           <Input
             type="text"
             name="name"
@@ -18,8 +17,7 @@ export function Contact() {
             label="Name"
           />
 
-          {/* email */}
-
+          {/* Email */}
           <Input
             type="email"
             name="email"
@@ -27,8 +25,7 @@ export function Contact() {
             label="Email"
           />
 
-          {/* Qualification */}
-
+          {/* Subject */}
           <Input
             type="text"
             name="subject"
@@ -36,18 +33,19 @@ export function Contact() {
             label="Subject"
           />
 
-          {/* message */}
-
-          {/* <label htmlFor="">Enter Message</label> */}
-          <div className="">
-            <p className="text-green-600">Message</p>
+          {/* Message */}
+          <div className="sm:col-span-2">
+            <label htmlFor="message" className="text-green-600 block mb-1">
+              Message
+            </label>
             <textarea
               name="message"
-              id=""
-              placeholder="Enter message"
-              className="w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-green-200"
+              id="message"
+              placeholder="Enter your message"
+              className="w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-green-200 resize-none h-32 sm:h-40"
             ></textarea>
           </div>
+
           {/* Submit Button */}
           <div className="sm:col-span-2 flex justify-center">
             <Button
