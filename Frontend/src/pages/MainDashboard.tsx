@@ -1,6 +1,5 @@
 import { Sidebars } from "../components/Sidebars";
 import { Outlet } from "react-router-dom";
-import { HamIcon } from "../icons/HamIcon";
 
 export function MainDashboard() {
   return (
