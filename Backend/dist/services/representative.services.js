@@ -32,7 +32,7 @@ const isRepresentaivePresent = (_a) => __awaiter(void 0, [_a], void 0, function*
     }
 });
 exports.isRepresentaivePresent = isRepresentaivePresent;
-const createActivity = (_a) => __awaiter(void 0, [_a], void 0, function* ({ representative_name, doctor_name, date, product_name, latitude, longitude, image_data }) {
+const createActivity = (_a) => __awaiter(void 0, [_a], void 0, function* ({ representative_name, doctor_name, date, product_name, latitude, longitude }) {
     // console.log(representative_name,doctor_name, date, product_name)
     if (!representative_name || !doctor_name || !date || !product_name || !latitude || !longitude) {
         throw new Error("Invalid input");
@@ -49,7 +49,7 @@ const createActivity = (_a) => __awaiter(void 0, [_a], void 0, function* ({ repr
                 product_promoted: product_name,
                 latitude: latitude,
                 longitude: longitude,
-                image_data: image_data,
+                // image_data: image_data as Uint8Array | null,
             }
         });
         return createactivity;

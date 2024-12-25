@@ -51,7 +51,7 @@ const SubmitDailyActivity = (req, res, next) => __awaiter(void 0, void 0, void 0
         const base64Image = image.split(";base64,").pop();
         const image_data = base64Image ? Buffer.from(base64Image, "base64") : null;
         console.log(image_data);
-        const Activity = yield (0, representative_services_1.createActivity)({ representative_name, doctor_name, date, product_name, latitude, longitude, image_data });
+        const Activity = yield (0, representative_services_1.createActivity)({ representative_name, doctor_name, date, product_name, latitude, longitude });
         res.status(200).json(Activity);
     }
     catch (error) {

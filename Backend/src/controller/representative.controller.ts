@@ -53,7 +53,7 @@ export const SubmitDailyActivity = async (req: Request, res: Response, next: Nex
 
     console.log(image_data)
 
-    const Activity = await createActivity({representative_name, doctor_name, date, product_name, latitude,longitude, image_data});
+    const Activity = await createActivity({representative_name, doctor_name, date, product_name, latitude,longitude});
 
     res.status(200).json(Activity);
   } catch (error: any) {
