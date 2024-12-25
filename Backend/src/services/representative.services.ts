@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 
+
 const Client = new PrismaClient();
 
 export const isRepresentaivePresent = async ({employeeid, password}: any)=>{
@@ -30,7 +31,7 @@ interface ActivityType {
     product_name: string;
     latitude: number,
     longitude: number,
-    image_data: Buffer; // Mark as optional
+    image_data?: Uint8Array | null; // Mark as optional
 }
 
 export const createActivity = async ({representative_name, doctor_name, date, product_name, latitude, longitude, image_data}: ActivityType) =>{
@@ -41,17 +42,33 @@ export const createActivity = async ({representative_name, doctor_name, date, pr
     }
 
     try {
+
+        const activityData = {
+            representative_name,
+            doctor_name,
+            date: new Date(date),
+            product_promoted: product_name,
+            latitude,
+            longitude,
+            image_data: image_data ? image_data : null,  // Handle optional image_data
+        };
+
+
+        // const createactivity = await Client.activity.create({
+        //     data: {
+        //         representative_name: representative_name,
+        //         doctor_name: doctor_name,
+        //         date: new Date(date),
+        //         product_promoted: product_name,
+        //         latitude: latitude,
+        //         longitude: longitude,
+        //         image_data: image_data,
+        //         // image_data: image_data as Uint8Array | null,
+        //     }
+        // })
+
         const createactivity = await Client.activity.create({
-            data: {
-                representative_name: representative_name,
-                doctor_name: doctor_name,
-                date: new Date(date),
-                product_promoted: product_name,
-                latitude: latitude,
-                longitude: longitude,
-                image_data: new Uint8Array(image_data)
-                // image_data: image_data as Uint8Array | null,
-            }
+            data: activityData
         })
 
         return createactivity;

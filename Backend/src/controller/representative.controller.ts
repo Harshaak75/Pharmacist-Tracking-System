@@ -49,9 +49,9 @@ export const SubmitDailyActivity = async (req: Request, res: Response, next: Nex
 
     const base64Image = image.split(";base64,").pop();
 
-    const image_data = Buffer.from(base64Image, "base64");
+    const image_d = Buffer.from(base64Image, "base64");
 
-    console.log(new Uint8Array(image_data))
+    const image_data = new Uint8Array(image_d)
 
     const Activity = await createActivity({representative_name, doctor_name, date, product_name, latitude,longitude, image_data});
 
