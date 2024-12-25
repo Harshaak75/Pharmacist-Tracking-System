@@ -49,7 +49,7 @@ export const SubmitDailyActivity = async (req: Request, res: Response, next: Nex
 
     const base64Image = image.split(";base64,").pop();
 
-    const image_data = Buffer.from(base64Image, "base64")
+    const image_data = base64Image ? Buffer.from(base64Image, "base64") : null;
 
     console.log(image_data)
 

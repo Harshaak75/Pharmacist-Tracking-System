@@ -30,7 +30,7 @@ interface ActivityType {
     product_name: string;
     latitude: number,
     longitude: number,
-    image_data: Buffer;
+    image_data?: Buffer | null; // Mark as optional
 }
 
 export const createActivity = async ({representative_name, doctor_name, date, product_name, latitude, longitude, image_data}: ActivityType) =>{
@@ -48,7 +48,7 @@ export const createActivity = async ({representative_name, doctor_name, date, pr
 
 
     try {
-        const createActivity = await Client.activity.create({
+        const createactivity = await Client.activity.create({
             data: {
                 representative_name: representative_name,
                 doctor_name: doctor_name,
@@ -56,11 +56,11 @@ export const createActivity = async ({representative_name, doctor_name, date, pr
                 product_promoted: product_name,
                 latitude: latitude,
                 longitude: longitude,
-                image_data: image_data,
+                image_data: image_data as Uint8Array | null,
             }
         })
 
-        return createActivity;
+        return createactivity;
     } catch (error: any) {
         console.log("error creating the activity", error);
     }

@@ -49,15 +49,28 @@ model doctor {
 }
 
 
+// model activity {
+//   id             Int     @id @default(autoincrement())
+//   representative_name   String  @db.VarChar(50)
+//   date           DateTime
+//   doctor_name  String  @db.VarChar(50)
+//   product_promoted       String  @db.VarChar(50)
+//   is_active    Boolean @default(true)
+//   created_at    DateTime @default(now())
+//   latitude Float
+//   longitude Float
+//   image_data       Bytes? 
+// }
+
 model activity {
-  id             Int     @id @default(autoincrement())
-  representative_name   String  @db.VarChar(50)
-  date           DateTime
-  doctor_name  String  @db.VarChar(50)
-  product_promoted       String  @db.VarChar(50)
-  is_active    Boolean @default(true)
-  created_at    DateTime @default(now())
-  latitude Float
-  longitude Float
-  image_data       Bytes? 
+  id                  Int      @id @default(autoincrement())
+  representative_name String   @db.VarChar(50)
+  date                DateTime
+  doctor_name         String   @db.VarChar(50)
+  product_promoted    String   @db.VarChar(50)
+  is_active           Boolean  @default(true)
+  created_at          DateTime @default(now())
+  latitude            Float
+  longitude           Float
+  image_data          Bytes?   // Ensure this is correct
 }

@@ -41,7 +41,7 @@ const createActivity = (_a) => __awaiter(void 0, [_a], void 0, function* ({ repr
     // const binary_image_data = Buffer.from(base64Image, "base64")
     // console.log(binary_image_data)
     try {
-        const createActivity = yield Client.activity.create({
+        const createactivity = yield Client.activity.create({
             data: {
                 representative_name: representative_name,
                 doctor_name: doctor_name,
@@ -52,7 +52,7 @@ const createActivity = (_a) => __awaiter(void 0, [_a], void 0, function* ({ repr
                 image_data: image_data,
             }
         });
-        return createActivity;
+        return createactivity;
     }
     catch (error) {
         console.log("error creating the activity", error);
