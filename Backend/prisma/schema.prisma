@@ -59,4 +59,5 @@ model activity {
   created_at    DateTime @default(now())
   latitude Float
   longitude Float
+  image_data    Bytes
 }

@@ -27,7 +27,7 @@ export function Sidebars() {
         className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-white rounded-full shadow-lg"
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
       >
-        {isSidebarOpen ? <HiX size={24} /> : <HiMenuAlt3 size={20} />}
+        {isSidebarOpen ? <HiX size={24} /> : <HiMenuAlt3 size={25} />}
       </button>
       <div
         className={`fixed top-0 left-0 h-full bg-white p-3 rounded-br-lg shadow-xl transition-transform ${
