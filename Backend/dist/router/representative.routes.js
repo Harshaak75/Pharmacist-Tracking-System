@@ -36,6 +36,6 @@ router.post("/create/DailyActivity", [
     (0, express_validator_1.body)("product_name").notEmpty().withMessage("Enter product_name"),
     (0, express_validator_1.body)("latitude").notEmpty().withMessage("Enter latitude"),
     (0, express_validator_1.body)("longitude").notEmpty().withMessage("Enter longitude"),
-    (0, express_validator_1.body)("image_data").notEmpty().withMessage("Upload Image "),
+    (0, express_validator_1.body)("image").notEmpty().withMessage("Upload Image "),
 ], representative_controller_1.SubmitDailyActivity);
 exports.default = router;

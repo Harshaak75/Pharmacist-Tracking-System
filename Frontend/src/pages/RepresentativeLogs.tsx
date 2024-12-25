@@ -73,7 +73,7 @@ export function RepresentativeLogs() {
           product_name: activity_data.product_promoted,
           latitude: currentPositon?.[0] || 0,
           longitude: currentPositon?.[1] || 0,
-          image_data: image || "",
+          image: image,
         }
       );
 

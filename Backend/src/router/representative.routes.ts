@@ -40,7 +40,7 @@ router.post("/create/DailyActivity",[
     body("product_name").notEmpty().withMessage("Enter product_name"),
     body("latitude").notEmpty().withMessage("Enter latitude"),
     body("longitude").notEmpty().withMessage("Enter longitude"),
-    body("image_data").notEmpty().withMessage("Upload Image "),
+    body("image").notEmpty().withMessage("Upload Image "),
 ],
 SubmitDailyActivity,
 )

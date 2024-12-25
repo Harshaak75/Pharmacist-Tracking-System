@@ -43,13 +43,17 @@ export const SubmitDailyActivity = async (req: Request, res: Response, next: Nex
   }
 
   try {
-    const {representative_name, doctor_name, date, product_name, latitude,longitude, image_data} = req.body;
+    const {representative_name, doctor_name, date, product_name, latitude,longitude, image} = req.body;
 
     // console.log(image_data)
 
-    const base64Image = image_data.split(";base64,").pop();
+    const base64Image = image.split(";base64,").pop();
 
-    const Activity = await createActivity({representative_name, doctor_name, date, product_name, latitude,longitude, base64Image});
+    const image_data = Buffer.from(base64Image, "base64")
+
+    console.log(image_data)
+
+    const Activity = await createActivity({representative_name, doctor_name, date, product_name, latitude,longitude, image_data});
 
     res.status(200).json(Activity);
   } catch (error: any) {
