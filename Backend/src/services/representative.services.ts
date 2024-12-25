@@ -1,6 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 
-
 const Client = new PrismaClient();
 
 export const isRepresentaivePresent = async ({employeeid, password}: any)=>{
@@ -36,13 +35,11 @@ interface ActivityType {
 
 export const createActivity = async ({representative_name, doctor_name, date, product_name, latitude, longitude, image_data}: ActivityType) =>{
 
-    // console.log(representative_name,doctor_name, date, product_name)
     if(!representative_name || !doctor_name || !date || !product_name || !latitude || !longitude){
         throw new Error("Invalid input");
     }
 
     try {
-
         const activityData = {
             representative_name,
             doctor_name,
@@ -62,3 +59,7 @@ export const createActivity = async ({representative_name, doctor_name, date, pr
         console.log("error creating the activity", error);
     }
 }
+
+
+
+
