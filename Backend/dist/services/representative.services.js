@@ -37,9 +37,6 @@ const createActivity = (_a) => __awaiter(void 0, [_a], void 0, function* ({ repr
     if (!representative_name || !doctor_name || !date || !product_name || !latitude || !longitude) {
         throw new Error("Invalid input");
     }
-    // console.log(binary_image_data)
-    // const binary_image_data = Buffer.from(base64Image, "base64")
-    // console.log(binary_image_data)
     try {
         const createactivity = yield Client.activity.create({
             data: {
@@ -49,7 +46,7 @@ const createActivity = (_a) => __awaiter(void 0, [_a], void 0, function* ({ repr
                 product_promoted: product_name,
                 latitude: latitude,
                 longitude: longitude,
-                image_data
+                image_data: new Uint8Array(image_data)
                 // image_data: image_data as Uint8Array | null,
             }
         });
