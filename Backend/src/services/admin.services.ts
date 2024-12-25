@@ -117,7 +117,6 @@ export const create_doctor = async (doctor_details: doctorType, role = "doctor")
       // throw new Error("Invalid input");
       return "invalid input"
     }
-
     const doctor = await Client.doctor.create({
         data:{
             name: doctor_details.name,
