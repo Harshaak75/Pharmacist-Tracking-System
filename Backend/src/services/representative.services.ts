@@ -31,7 +31,7 @@ interface ActivityType {
     product_name: string;
     latitude: number,
     longitude: number,
-    image_data: Uint8Array | null; // Mark as optional
+    image_data?: Uint8Array | null; // Mark as optional
 }
 
 export const createActivity = async ({representative_name, doctor_name, date, product_name, latitude, longitude, image_data}: ActivityType) =>{
@@ -50,7 +50,7 @@ export const createActivity = async ({representative_name, doctor_name, date, pr
             product_promoted: product_name,
             latitude,
             longitude,
-            image_data: image_data ? image_data : null,  // Handle optional image_data
+            image_data: image_data || null,  // Handle optional image_data
         };
 
         const createactivity = await Client.activity.create({
