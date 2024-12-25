@@ -41,6 +41,7 @@ export const createActivity = async ({representative_name, doctor_name, date, pr
     }
 
     console.log(binary_image_data)
+    
 
     try {
         const createActivity = await Client.activity.create({
