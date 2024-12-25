@@ -53,20 +53,6 @@ export const createActivity = async ({representative_name, doctor_name, date, pr
             image_data: image_data ? image_data : null,  // Handle optional image_data
         };
 
-
-        // const createactivity = await Client.activity.create({
-        //     data: {
-        //         representative_name: representative_name,
-        //         doctor_name: doctor_name,
-        //         date: new Date(date),
-        //         product_promoted: product_name,
-        //         latitude: latitude,
-        //         longitude: longitude,
-        //         image_data: image_data,
-        //         // image_data: image_data as Uint8Array | null,
-        //     }
-        // })
-
         const createactivity = await Client.activity.create({
             data: activityData
         })

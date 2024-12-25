@@ -47,18 +47,6 @@ const createActivity = (_a) => __awaiter(void 0, [_a], void 0, function* ({ repr
             longitude,
             image_data: image_data ? image_data : null, // Handle optional image_data
         };
-        // const createactivity = await Client.activity.create({
-        //     data: {
-        //         representative_name: representative_name,
-        //         doctor_name: doctor_name,
-        //         date: new Date(date),
-        //         product_promoted: product_name,
-        //         latitude: latitude,
-        //         longitude: longitude,
-        //         image_data: image_data,
-        //         // image_data: image_data as Uint8Array | null,
-        //     }
-        // })
         const createactivity = yield Client.activity.create({
             data: activityData
         });
