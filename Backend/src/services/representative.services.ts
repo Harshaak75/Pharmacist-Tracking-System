@@ -30,18 +30,22 @@ interface ActivityType {
     product_name: string;
     latitude: number,
     longitude: number,
-    binary_image_data: Buffer;
+    base64Image: string;
 }
 
-export const createActivity = async ({representative_name, doctor_name, date, product_name, latitude, longitude, binary_image_data}: ActivityType) =>{
+export const createActivity = async ({representative_name, doctor_name, date, product_name, latitude, longitude, base64Image}: ActivityType) =>{
 
     // console.log(representative_name,doctor_name, date, product_name)
     if(!representative_name || !doctor_name || !date || !product_name || !latitude || !longitude){
         throw new Error("Invalid input");
     }
 
+    // console.log(binary_image_data)
+
+    const binary_image_data = Buffer.from(base64Image, "base64")
+
     console.log(binary_image_data)
-    
+
 
     try {
         const createActivity = await Client.activity.create({
