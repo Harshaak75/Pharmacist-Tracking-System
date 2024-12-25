@@ -31,7 +31,7 @@ interface ActivityType {
     product_name: string;
     latitude: number,
     longitude: number,
-    image_data?: Uint8Array | null; // Mark as optional
+    image_data: Uint8Array | null; // Mark as optional
 }
 
 export const createActivity = async ({representative_name, doctor_name, date, product_name, latitude, longitude, image_data}: ActivityType) =>{
