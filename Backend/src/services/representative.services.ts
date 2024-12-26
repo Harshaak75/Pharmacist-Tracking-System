@@ -26,16 +26,15 @@ export const isRepresentaivePresent = async ({employeeid, password}: any)=>{
 interface ActivityType {
     representative_name: string;
     doctor_name: string;
-    date: string;
     product_name: string;
     latitude: number,
     longitude: number,
     image_data?: Uint8Array | null; // Mark as optional
 }
 
-export const createActivity = async ({representative_name, doctor_name, date, product_name, latitude, longitude, image_data}: ActivityType) =>{
+export const createActivity = async ({representative_name, doctor_name,product_name, latitude, longitude, image_data}: ActivityType) =>{
 
-    if(!representative_name || !doctor_name || !date || !product_name || !latitude || !longitude){
+    if(!representative_name || !doctor_name || !product_name || !latitude || !longitude){
         throw new Error("Invalid input");
     }
 
@@ -43,7 +42,6 @@ export const createActivity = async ({representative_name, doctor_name, date, pr
         const activityData = {
             representative_name,
             doctor_name,
-            date: new Date(date),
             product_promoted: product_name,
             latitude,
             longitude,

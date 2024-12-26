@@ -43,7 +43,7 @@ export const SubmitDailyActivity = async (req: Request, res: Response, next: Nex
   }
 
   try {
-    const {representative_name, doctor_name, date, product_name, latitude,longitude, image} = req.body;
+    const {representative_name, doctor_name,product_name, latitude,longitude, image} = req.body;
 
     // console.log(image_data)
 
@@ -53,7 +53,7 @@ export const SubmitDailyActivity = async (req: Request, res: Response, next: Nex
 
     const image_data = new Uint8Array(image_d)
 
-    const Activity = await createActivity({representative_name, doctor_name, date, product_name, latitude,longitude, image_data});
+    const Activity = await createActivity({representative_name, doctor_name,product_name, latitude,longitude, image_data});
 
     res.status(200).json(Activity);
   } catch (error: any) {

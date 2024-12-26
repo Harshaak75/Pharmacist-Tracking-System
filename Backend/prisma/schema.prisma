@@ -64,7 +64,6 @@ model doctor {
 model activity {
   id                  Int      @id @default(autoincrement())
   representative_name String   @db.VarChar(50)
-  date                DateTime
   doctor_name         String   @db.VarChar(50)
   product_promoted    String   @db.VarChar(50)
   is_active           Boolean  @default(true)
