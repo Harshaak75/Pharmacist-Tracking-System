@@ -41,10 +41,8 @@ router.post(
 router.post("/create/doctor",[
     body("name").notEmpty().withMessage("Enter your employee name"),
     body("gender").notEmpty().withMessage("Enter your gender"),
-    // body("date_of_birth").notEmpty().withMessage("Enter your date of birth"),
     body("qualification").notEmpty().withMessage("Enter your qualification"),
     body("year_of_expirened").notEmpty().withMessage("Enter your year_of_expirened"),
-    // body("licence_number").notEmpty().withMessage("Enter your licence_number"),
     body("hospital_name").notEmpty().withMessage("Enter your hospital_name"),
     body("speciality").notEmpty().withMessage("Enter your speciality"),
     body("address").notEmpty().withMessage("Enter your address"),
