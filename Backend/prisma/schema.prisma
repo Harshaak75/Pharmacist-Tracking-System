@@ -34,10 +34,8 @@ model doctor {
   id         Int     @id @default(autoincrement())
   name       String @db.VarChar(50)
   gender     String @db.VarChar(5)
-  date_of_birth  DateTime
   qualification String
   year_of_expirened Int
-  licence_number String  @unique
   hospital_name String
   speciality String @db.VarChar(50)
   address    String @db.VarChar(255)

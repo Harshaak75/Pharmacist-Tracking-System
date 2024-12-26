@@ -8,10 +8,8 @@ export function DoctorForm() {
 
   const nameRef = useRef<HTMLInputElement>(null);
   const genderRef = useRef<HTMLSelectElement>(null);
-  const dobRef = useRef<HTMLInputElement>(null);
   const qualificationRef = useRef<HTMLInputElement>(null);
   const experienceRef = useRef<HTMLInputElement>(null);
-  const licenceRef = useRef<HTMLInputElement>(null);
   const hospitalRef = useRef<HTMLInputElement>(null);
   const specialityRef = useRef<HTMLInputElement>(null);
   const addressRef = useRef<HTMLInputElement>(null);
@@ -31,10 +29,8 @@ export function DoctorForm() {
     const formData = {
       name: nameRef.current?.value,
       gender: genderRef.current?.value,
-      date_of_birth: dobRef.current?.value,
       qualification: qualificationRef.current?.value,
       year_of_experience: experienceRef.current?.value,
-      licence_number: licenceRef.current?.value,
       hospital_name: hospitalRef.current?.value,
       speciality: specialityRef.current?.value,
       address: addressRef.current?.value,
@@ -49,10 +45,8 @@ export function DoctorForm() {
       const response = await axios.post(backend_url + "/representative/create/doctor", {
         name: formData.name,
         gender: formData.gender,
-        date_of_birth: formData.date_of_birth,
         qualification: formData.qualification,
         year_of_expirened: formData.year_of_experience,
-        licence_number: formData.licence_number,
         hospital_name: formData.hospital_name,
         speciality: formData.speciality,
         address: formData.address,
@@ -66,10 +60,8 @@ export function DoctorForm() {
       const refs = [
         nameRef,
         genderRef,
-        dobRef,
         qualificationRef,
         experienceRef,
-        licenceRef,
         hospitalRef,
         specialityRef,
         addressRef,
@@ -137,7 +129,7 @@ export function DoctorForm() {
           </div>
 
           {/* Date of Birth */}
-          <Input reff={dobRef} type="date" name="date_of_birth" label="Date of Birth" />
+          {/* <Input reff={dobRef} type="date" name="date_of_birth" label="Date of Birth" /> */}
 
           {/* Qualification */}
           <Input
@@ -158,13 +150,13 @@ export function DoctorForm() {
           />
 
           {/* Licence Number */}
-          <Input
+          {/* <Input
             reff={licenceRef}
             type="text"
             name="licence_number"
             placeholder="Enter licence number"
             label="Licence Number"
-          />
+          /> */}
 
           {/* Hospital Name */}
           <Input

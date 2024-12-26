@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import { NextFunction, Request, Response } from "express";
-import { Int32 } from "mongoose";
+// import { NextFunction, Request, Response } from "express";
+// import { Int32 } from "mongoose";
 
 const Client = new PrismaClient();
 
@@ -21,10 +21,10 @@ interface RepresentativeType {
 interface doctorType {
   name: string;
   gender: string;
-  date_of_birth: string,
+  // date_of_birth: string,
   qualification: string;
   year_of_expirened: number;
-  licence_number: string
+  // licence_number: string
   hospital_name: string;
   speciality: string;
   address: string;
@@ -104,10 +104,8 @@ export const create_doctor = async (doctor_details: doctorType, role = "doctor")
     if (
       !doctor_details.name ||
       !doctor_details.gender ||
-      !doctor_details.date_of_birth ||
       !doctor_details.qualification ||
       !doctor_details.year_of_expirened ||
-      !doctor_details.licence_number ||
       !doctor_details.hospital_name ||
       !doctor_details.speciality ||
       !doctor_details.address ||
@@ -126,11 +124,9 @@ export const create_doctor = async (doctor_details: doctorType, role = "doctor")
             speciality: doctor_details.speciality,
             year_of_expirened:Number(doctor_details.year_of_expirened),
             gender: doctor_details.gender,
-            date_of_birth: new Date(doctor_details.date_of_birth),
             qualification: doctor_details.qualification,
             address: doctor_details.address,
             hospital_name: doctor_details.hospital_name,
-            licence_number: doctor_details.licence_number,
             role: role,
         },
     });
