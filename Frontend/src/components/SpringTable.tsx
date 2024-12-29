@@ -28,7 +28,7 @@ export function SpringTable({ column, data, title }: any) {
             </tr>
           </thead>
           <tbody>
-            {data.map((row: any, index: any) => (
+            {data.map((row: any) => (
               <AnimatedRow
                 row={row}
               />
