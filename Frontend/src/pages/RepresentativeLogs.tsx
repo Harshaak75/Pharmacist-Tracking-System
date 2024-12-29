@@ -27,7 +27,6 @@ export function RepresentativeLogs() {
   >(null);
 
   const nameRef = useRef<HTMLInputElement>(null);
-  // const dateRef = useRef<HTMLInputElement>(null);
   const doctor_nameRef = useRef<HTMLInputElement>(null);
   const Product_PromotedRef = useRef<HTMLSelectElement>(null);
 
@@ -58,7 +57,6 @@ export function RepresentativeLogs() {
 
     const activity_data = {
       name: nameRef.current?.value,
-      // date: dateRef.current?.value,
       doctor_name: doctor_nameRef.current?.value,
       product_promoted: Product_PromotedRef.current?.value,
     };
@@ -69,7 +67,6 @@ export function RepresentativeLogs() {
         {
           representative_name: activity_data.name,
           doctor_name: activity_data.doctor_name,
-          // date: activity_data.date,
           product_name: activity_data.product_promoted,
           latitude: currentPositon?.[0] || 0,
           longitude: currentPositon?.[1] || 0,
@@ -124,9 +121,6 @@ export function RepresentativeLogs() {
             placeholder="Enter representative name"
             label="Name"
           />
-
-          {/* Date */}
-          {/* <Input reff={dateRef} type="date" name="date" label="Date" /> */}
 
           {/* Doctor's Name */}
           <Input

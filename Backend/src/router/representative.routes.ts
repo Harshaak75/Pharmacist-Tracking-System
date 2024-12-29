@@ -5,12 +5,16 @@ import { create_doctor_account } from "../controller/admin.controller";
 
 const router = express.Router();
 
+// login representative
+
 router.post("/login",[
     body("employeeid").notEmpty().withMessage("Enter your employeeId"),
     body("password").notEmpty().withMessage("Enter your password")
 ],
 loginRepresentateive,
 )
+
+// create doctor account by representative
 
 router.post("/create/doctor",[
     body("name").notEmpty().withMessage("Enter your employee name"),
@@ -25,11 +29,11 @@ router.post("/create/doctor",[
      .withMessage("Enter phone number"),
     body("email").isEmail().withMessage("enter valid email"),
     body("password").notEmpty().withMessage("enter valid password"),
-    
-    // body("role").notEmpty().withMessage("select your role")
   ],
   create_doctor_account,
 )
+
+// submit daily activity by representative
 
 router.post("/create/DailyActivity",[
   body("representative_name").notEmpty().withMessage("Enter your employee name"),

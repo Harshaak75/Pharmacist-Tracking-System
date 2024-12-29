@@ -4,6 +4,8 @@ import { createActivity, isRepresentaivePresent } from "../services/representati
 import bcrypt from "bcrypt"
 
 
+// logic to validate login credentials of representaive
+
 export const loginRepresentateive = async (req: Request, res: Response, next: NextFunction): Promise<any> =>{
     const error = validationResult(req);
 
@@ -34,6 +36,8 @@ export const loginRepresentateive = async (req: Request, res: Response, next: Ne
         return res.json(error)
     }
 }
+
+// logic to submit daily activity of representative
 
 export const SubmitDailyActivity = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const error = validationResult(req);

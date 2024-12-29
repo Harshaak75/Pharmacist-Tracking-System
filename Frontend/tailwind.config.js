@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'lg-xl': { min: '1024px', max: '1280px' }, // Between lg and xl
+      },
+    },
   },
   plugins: [],
 }

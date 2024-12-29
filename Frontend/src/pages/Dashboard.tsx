@@ -7,7 +7,7 @@ export function Dashboard() {
   const card_data = {
     Representative: {
       count: 76,
-      icon: <Person />,
+      icon: <Person width={"60"} height={"60"} />,
     },
     Doctors: {
       count: 49,

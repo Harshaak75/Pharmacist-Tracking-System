@@ -2,6 +2,8 @@ import { PrismaClient } from "@prisma/client";
 
 const Client = new PrismaClient();
 
+// logic to query the database for representative present or not
+
 export const isRepresentaivePresent = async ({employeeid, password}: any)=>{
     if(!employeeid || !password){
         throw new Error("Employee id is required");
@@ -31,6 +33,8 @@ interface ActivityType {
     longitude: number,
     image_data?: Uint8Array | null; // Mark as optional
 }
+
+// logic to add activity to database from representative
 
 export const createActivity = async ({representative_name, doctor_name,product_name, latitude, longitude, image_data}: ActivityType) =>{
 
