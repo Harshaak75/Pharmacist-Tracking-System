@@ -6,7 +6,6 @@ import { MainDashboard } from './pages/MainDashboard'
 import { RepresentativeLogs } from './pages/RepresentativeLogs'
 import { Contact } from './pages/Contact'
 import { Report } from './pages/Report'
-import { Signin } from './pages/Signin'
 import AdminCreate from './components/AdminCreate'
 
 function App() {
