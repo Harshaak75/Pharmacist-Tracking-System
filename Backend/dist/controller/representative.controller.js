@@ -16,6 +16,7 @@ exports.SubmitDailyActivity = exports.loginRepresentateive = void 0;
 const express_validator_1 = require("express-validator");
 const representative_services_1 = require("../services/representative.services");
 const bcrypt_1 = __importDefault(require("bcrypt"));
+// logic to validate login credentials of representaive
 const loginRepresentateive = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const error = (0, express_validator_1.validationResult)(req);
     if (!error.isEmpty()) {
@@ -40,18 +41,19 @@ const loginRepresentateive = (req, res, next) => __awaiter(void 0, void 0, void 
     }
 });
 exports.loginRepresentateive = loginRepresentateive;
+// logic to submit daily activity of representative
 const SubmitDailyActivity = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const error = (0, express_validator_1.validationResult)(req);
     if (!error.isEmpty()) {
         return res.status(400).json({ errors: error.array() });
     }
     try {
-        const { representative_name, doctor_name, date, product_name, latitude, longitude, image } = req.body;
+        const { representative_name, doctor_name, product_name, latitude, longitude, image } = req.body;
         // console.log(image_data)
         const base64Image = image.split(";base64,").pop();
         const image_d = Buffer.from(base64Image, "base64");
         const image_data = new Uint8Array(image_d);
-        const Activity = yield (0, representative_services_1.createActivity)({ representative_name, doctor_name, date, product_name, latitude, longitude, image_data });
+        const Activity = yield (0, representative_services_1.createActivity)({ representative_name, doctor_name, product_name, latitude, longitude, image_data });
         res.status(200).json(Activity);
     }
     catch (error) {

@@ -7,6 +7,7 @@ import { RepresentativeLogs } from './pages/RepresentativeLogs'
 import { Contact } from './pages/Contact'
 import { Report } from './pages/Report'
 import { Signin } from './pages/Signin'
+import AdminCreate from './components/AdminCreate'
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
       <Route path='Representatives-Logs' element={<RepresentativeLogs/>} />
       <Route path='Contact' element={<Contact/>} />
       <Route path='Reports' element={<Report/>} />
-      <Route path='Logout' element={<Signin/>} />
       </Route>
+      {/* <Route path='Logout' element={<AdminCreate/>} /> */}
+      <Route path='/admin/create/258741325' element={<AdminCreate/>} />
     </Routes>
     </BrowserRouter>
   )

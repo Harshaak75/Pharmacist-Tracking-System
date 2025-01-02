@@ -4,10 +4,11 @@ import { PrismaClient } from "@prisma/client";
 
 const Client = new PrismaClient();
 
-interface admintype {
-  employeeId: string;
-  password: string;
-}
+// interface admintype {
+//   employeeId: string;
+//   password: string;
+//   role?: string;
+// }
 
 interface RepresentativeType {
   name: string;
@@ -36,24 +37,26 @@ interface doctorType {
 
 // admin data validate
 
-export const LoginAdmin = async ({ employeeId, password }: admintype) => {
-  try {
-    if (!employeeId || !password) {
-      throw new Error("Invalid input");
-    }
+// export const LoginAdmin = async ({ employeeId, password }: admintype) => {
+//   try {
+//     if (!employeeId || !password) {
+//       throw new Error("Invalid input");
+//     }
 
-    const admin = await Client.admin.findFirst({
-      where: {
-        employeeid: employeeId,
-        password: password,
-      },
-    });
+//     const admin = await Client.collection_of_models.findFirst({
+//       where: {
+//         employeeid: employeeId,
+//         password: password,
+//       },
+//     });
 
-    return admin;
-  } catch (error) {
-    return error;
-  }
-};
+//     console.log(admin)
+
+//     return admin;
+//   } catch (error) {
+//     return error;
+//   }
+// };
 
 // Representative data validation and push to database
 

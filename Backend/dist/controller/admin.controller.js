@@ -12,22 +12,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.create_doctor_account = exports.Create_Representative_Account = exports.loginAdmin = void 0;
+exports.create_doctor_account = exports.Create_Representative_Account = void 0;
 const express_validator_1 = require("express-validator");
 const admin_services_1 = require("../services/admin.services");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 // admin login logic
-const loginAdmin = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const error = (0, express_validator_1.validationResult)(req);
-    if (!error.isEmpty()) {
-        return res.status(400).json({ errors: error.array() });
-    }
-    // Continue with login logic...
-    const { employeeId, password } = req.body;
-    const admin_data = yield (0, admin_services_1.LoginAdmin)({ employeeId, password });
-    res.json(admin_data);
-});
-exports.loginAdmin = loginAdmin;
+// export const loginAdmin = async (
+//   req: Request,
+//   res: Response,
+//   next: NextFunction
+// ): Promise<any> => {
+//   const error = validationResult(req);
+//   if (!error.isEmpty()) {
+//     return res.status(400).json({ errors: error.array() });
+//   }
+//   // Continue with login logic...
+//   const { employeeId, password } = req.body;
+//   const admin_data = await LoginAdmin({ employeeId, password });
+//   console.log(admin_data)
+//   res.json(admin_data);
+// };
 // Representative create account logic
 const Create_Representative_Account = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const error = (0, express_validator_1.validationResult)(req);

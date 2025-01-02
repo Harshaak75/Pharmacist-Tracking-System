@@ -10,12 +10,13 @@ datasource db {
 
 // admin table or model
 
-model admin {
+model collection_of_models {
   id         Int     @id @default(autoincrement())
-  name       String? @db.VarChar(50)
-  employeeid String  @unique @db.VarChar(50)
-  email      String  @unique @db.VarChar(50)
-  password   String  @db.VarChar(15)
+  name       String? @db.VarChar(100)
+  employeeid String  @unique @db.VarChar(100)
+  email      String  @unique @db.VarChar(100)
+  password   String  @db.VarChar(255)
+  role String @default("reprentative")
 }
 
 model representative {

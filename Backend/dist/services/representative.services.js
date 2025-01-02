@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createActivity = exports.isRepresentaivePresent = void 0;
 const client_1 = require("@prisma/client");
 const Client = new client_1.PrismaClient();
+// logic to query the database for representative present or not
 const isRepresentaivePresent = (_a) => __awaiter(void 0, [_a], void 0, function* ({ employeeid, password }) {
     if (!employeeid || !password) {
         throw new Error("Employee id is required");
@@ -32,15 +33,15 @@ const isRepresentaivePresent = (_a) => __awaiter(void 0, [_a], void 0, function*
     }
 });
 exports.isRepresentaivePresent = isRepresentaivePresent;
-const createActivity = (_a) => __awaiter(void 0, [_a], void 0, function* ({ representative_name, doctor_name, date, product_name, latitude, longitude, image_data }) {
-    if (!representative_name || !doctor_name || !date || !product_name || !latitude || !longitude) {
+// logic to add activity to database from representative
+const createActivity = (_a) => __awaiter(void 0, [_a], void 0, function* ({ representative_name, doctor_name, product_name, latitude, longitude, image_data }) {
+    if (!representative_name || !doctor_name || !product_name || !latitude || !longitude) {
         throw new Error("Invalid input");
     }
     try {
         const activityData = {
             representative_name,
             doctor_name,
-            date: new Date(date),
             product_promoted: product_name,
             latitude,
             longitude,

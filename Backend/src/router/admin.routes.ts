@@ -3,21 +3,20 @@ import { body } from "express-validator";
 import {
     create_doctor_account,
   Create_Representative_Account,
-  loginAdmin,
 } from "../controller/admin.controller";
 
 const router = express.Router();
 
 // admin login routes
 
-router.post(
-  "/login",
-  [
-    body("employeeId").notEmpty().withMessage("Enter your employee number"),
-    body("password").notEmpty().withMessage("enter valid password"),
-  ],
-  loginAdmin
-);
+// router.post(
+//   "/login",
+//   [
+//     body("employeeId").notEmpty().withMessage("Enter your employee number"),
+//     body("password").notEmpty().withMessage("enter valid password"),
+//   ],
+//   loginAdmin
+// );
 
 // Representative Create routes
 

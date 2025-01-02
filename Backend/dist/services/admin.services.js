@@ -9,28 +9,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.create_doctor = exports.CreateRepresentative = exports.LoginAdmin = void 0;
+exports.create_doctor = exports.CreateRepresentative = void 0;
 const client_1 = require("@prisma/client");
+// import { NextFunction, Request, Response } from "express";
+// import { Int32 } from "mongoose";
 const Client = new client_1.PrismaClient();
 // admin data validate
-const LoginAdmin = (_a) => __awaiter(void 0, [_a], void 0, function* ({ employeeId, password }) {
-    try {
-        if (!employeeId || !password) {
-            throw new Error("Invalid input");
-        }
-        const admin = yield Client.admin.findFirst({
-            where: {
-                employeeid: employeeId,
-                password: password,
-            },
-        });
-        return admin;
-    }
-    catch (error) {
-        return error;
-    }
-});
-exports.LoginAdmin = LoginAdmin;
+// export const LoginAdmin = async ({ employeeId, password }: admintype) => {
+//   try {
+//     if (!employeeId || !password) {
+//       throw new Error("Invalid input");
+//     }
+//     const admin = await Client.collection_of_models.findFirst({
+//       where: {
+//         employeeid: employeeId,
+//         password: password,
+//       },
+//     });
+//     console.log(admin)
+//     return admin;
+//   } catch (error) {
+//     return error;
+//   }
+// };
 // Representative data validation and push to database
 const CreateRepresentative = (_a) => __awaiter(void 0, [_a], void 0, function* ({ name, employeeid, email, bycrypt_password, phone_number, role = "representative", }) {
     try {
@@ -61,10 +62,8 @@ const create_doctor = (doctor_details_1, ...args_1) => __awaiter(void 0, [doctor
     try {
         if (!doctor_details.name ||
             !doctor_details.gender ||
-            !doctor_details.date_of_birth ||
             !doctor_details.qualification ||
             !doctor_details.year_of_expirened ||
-            !doctor_details.licence_number ||
             !doctor_details.hospital_name ||
             !doctor_details.speciality ||
             !doctor_details.address ||
@@ -82,11 +81,9 @@ const create_doctor = (doctor_details_1, ...args_1) => __awaiter(void 0, [doctor
                 speciality: doctor_details.speciality,
                 year_of_expirened: Number(doctor_details.year_of_expirened),
                 gender: doctor_details.gender,
-                date_of_birth: new Date(doctor_details.date_of_birth),
                 qualification: doctor_details.qualification,
                 address: doctor_details.address,
                 hospital_name: doctor_details.hospital_name,
-                licence_number: doctor_details.licence_number,
                 role: role,
             },
         });

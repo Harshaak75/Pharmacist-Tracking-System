@@ -1,29 +1,31 @@
 import { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
-import { create_doctor, CreateRepresentative, LoginAdmin } from "../services/admin.services";
+import { create_doctor, CreateRepresentative} from "../services/admin.services";
 import bcrypt from "bcrypt";
 
 // admin login logic
 
-export const loginAdmin = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<any> => {
-  const error = validationResult(req);
+// export const loginAdmin = async (
+//   req: Request,
+//   res: Response,
+//   next: NextFunction
+// ): Promise<any> => {
+//   const error = validationResult(req);
 
-  if (!error.isEmpty()) {
-    return res.status(400).json({ errors: error.array() });
-  }
+//   if (!error.isEmpty()) {
+//     return res.status(400).json({ errors: error.array() });
+//   }
 
-  // Continue with login logic...
+//   // Continue with login logic...
 
-  const { employeeId, password } = req.body;
+//   const { employeeId, password } = req.body;
 
-  const admin_data = await LoginAdmin({ employeeId, password });
+//   const admin_data = await LoginAdmin({ employeeId, password });
 
-  res.json(admin_data);
-};
+//   console.log(admin_data)
+
+//   res.json(admin_data);
+// };
 
 // Representative create account logic
 
