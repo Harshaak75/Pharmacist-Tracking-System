@@ -19,19 +19,34 @@ const AdminCreate = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(adminDetails)
+    // console.log(adminDetails)
 
-    await axios.post(backend_url + '/medtrackpro/createAdmin',{
-      name: adminDetails.Aname,
-      employeeId: adminDetails.username,
-      email: adminDetails.email,
-      password: adminDetails.password, 
-      key: adminDetails.key,
-    })
+    try {
+      const response = await axios.post(backend_url + '/medtrackpro/createAdmin', {
+        name: adminDetails.Aname,
+        employeeId: adminDetails.username,
+        email: adminDetails.email,
+        password: adminDetails.password,
+        key: adminDetails.key,
+      });
+    
+      console.log('Response:', response.data);
+      setSuccessMessage('Admin created successfully!');
+    } catch (error: any) {
+      if (error.response) {
+        // Handle error response from the server
+        console.error('Error Status:', error.response.status);
+        console.error('Error Data:', error.response.data.message);
+        console.error('Error Headers:', error.response.headers);
 
-    // console.log(response);
+        setSuccessMessage(error.response.data.message + "Access");
+      } else {
+        // Handle other errors
+        console.error('Error Message:', error.message);
+      }
+      setSuccessMessage(error.response.data.message + " Access");
+    }
     // Add admin creation logic here
-    setSuccessMessage('Admin created successfully!');
     setAdminDetails({ username: '', password: '', key: '' ,Aname: '', email: '' });
   };
 
