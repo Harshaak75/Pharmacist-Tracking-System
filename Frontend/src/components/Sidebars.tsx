@@ -3,9 +3,13 @@ import { Mainlogo } from "../icons/Mainlogo";
 import { SidebarItems } from "./sidebar.items";
 import { useNavigate } from "react-router-dom";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { useSetRecoilState } from "recoil";
+import { AuthSafe } from "../StateManagement/user.state";
 
 export function Sidebars() {
   const navigate = useNavigate();
+
+  const setAuthState = useSetRecoilState(AuthSafe);
 
   const formatRoute = (item: string) => item.replace(/ /g, "-");
 
@@ -45,6 +49,11 @@ export function Sidebars() {
                 key={key}
                 called={() => {
                   setSelectedItem(item);
+
+                  if(item == "Logout"){
+                    setAuthState({isLoggedIn: false});
+                    navigate("/login");
+                  }
                   navigate(`/${formatRoute(item)}`);
                   setIsSidebarOpen(false); // Close sidebar on item click
                 }}

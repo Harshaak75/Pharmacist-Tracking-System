@@ -33,7 +33,7 @@ const CheckLogin = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
         const bcrypt_password = bcrypt_1.default.compareSync(password, passwords);
         if (bcrypt_password) {
             console.log(admin.role, password); // Now TypeScript knows `role` exists
-            res.status(200).json({ messge: "success" });
+            res.status(200).json(admin.role);
             return;
         }
         else {

@@ -41,8 +41,8 @@ export const Create_Representative_Account = async (
   }
 
   try {
-    const { name, employeeid, email, password, phone_number } = req.body;
-    console.log(name, employeeid, email, password, phone_number);
+    const { name, employeeid, email, password} = req.body;
+    console.log(name, employeeid, email, password);
 
     const bycrypt_password = bcrypt.hashSync(password, 3);
 
@@ -51,7 +51,6 @@ export const Create_Representative_Account = async (
       employeeid,
       email,
       bycrypt_password,
-      phone_number,
     });
 
     console.log(Representative_data);

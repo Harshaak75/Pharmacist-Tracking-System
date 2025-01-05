@@ -26,10 +26,10 @@ router.post(
     body("name").notEmpty().withMessage("Enter your employee name"),
     body("employeeid").notEmpty().withMessage("Enter your employee Id"),
     body("email").isEmail().withMessage("enter valid email"),
-    body("password").notEmpty().withMessage("enter valid password"),
-    body("phone_number")
-      .notEmpty()
-      .withMessage("Enter phone number")
+    body("password").notEmpty().withMessage("enter valid password")
+    // body("phone_number")
+    //   .notEmpty()
+    //   .withMessage("Enter phone number")
     // body("role").notEmpty().withMessage("select your role")
   ],
   Create_Representative_Account

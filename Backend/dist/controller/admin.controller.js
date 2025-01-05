@@ -39,15 +39,14 @@ const Create_Representative_Account = (req, res, next) => __awaiter(void 0, void
         return res.status(400).json({ errors: error.array() });
     }
     try {
-        const { name, employeeid, email, password, phone_number } = req.body;
-        console.log(name, employeeid, email, password, phone_number);
+        const { name, employeeid, email, password } = req.body;
+        console.log(name, employeeid, email, password);
         const bycrypt_password = bcrypt_1.default.hashSync(password, 3);
         const Representative_data = yield (0, admin_services_1.CreateRepresentative)({
             name,
             employeeid,
             email,
             bycrypt_password,
-            phone_number,
         });
         console.log(Representative_data);
         res.status(200).json(Representative_data);

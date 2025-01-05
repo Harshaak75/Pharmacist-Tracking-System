@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "collection_of_models" ADD COLUMN     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN     "isActive" BOOLEAN NOT NULL DEFAULT true;

@@ -38,7 +38,7 @@ export const CheckLogin = async (
 
     if (bcrypt_password) {
       console.log(admin.role, password); // Now TypeScript knows `role` exists
-      res.status(200).json({ messge: "success" });
+      res.status(200).json(admin.role);
       return;
     } else {
       res.status(401).json({ message: "Incorrect Password" });

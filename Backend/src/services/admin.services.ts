@@ -15,7 +15,7 @@ interface RepresentativeType {
   employeeid: string;
   email: string;
   bycrypt_password: string;
-  phone_number: string;
+  phone_number?: string;
   role?: string;
 }
 
@@ -65,11 +65,10 @@ export const CreateRepresentative = async ({
   employeeid,
   email,
   bycrypt_password,
-  phone_number,
   role = "representative",
 }: RepresentativeType) => {
   try {
-    if (!name || !employeeid || !email || !bycrypt_password || !phone_number) {
+    if (!name || !employeeid || !email || !bycrypt_password) {
       throw new Error("Invalid input");
     }
 
@@ -79,16 +78,14 @@ export const CreateRepresentative = async ({
       employeeid,
       email,
       bycrypt_password,
-      phone_number
     );
 
-    const Representative = await Client.representative.create({
+    const Representative = await Client.collection_of_models.create({
       data: {
         name: name,
         employeeid: employeeid,
         email: email,
         password: bycrypt_password,
-        phone_number: phone_number,
         role: role,
       },
     });

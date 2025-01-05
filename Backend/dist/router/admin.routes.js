@@ -21,10 +21,10 @@ router.post("/create/rep", [
     (0, express_validator_1.body)("name").notEmpty().withMessage("Enter your employee name"),
     (0, express_validator_1.body)("employeeid").notEmpty().withMessage("Enter your employee Id"),
     (0, express_validator_1.body)("email").isEmail().withMessage("enter valid email"),
-    (0, express_validator_1.body)("password").notEmpty().withMessage("enter valid password"),
-    (0, express_validator_1.body)("phone_number")
-        .notEmpty()
-        .withMessage("Enter phone number")
+    (0, express_validator_1.body)("password").notEmpty().withMessage("enter valid password")
+    // body("phone_number")
+    //   .notEmpty()
+    //   .withMessage("Enter phone number")
     // body("role").notEmpty().withMessage("select your role")
 ], admin_controller_1.Create_Representative_Account);
 // Create Doctor account routes

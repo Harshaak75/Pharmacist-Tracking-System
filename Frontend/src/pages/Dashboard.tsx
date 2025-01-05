@@ -1,9 +1,16 @@
 
+import { useRecoilValue } from "recoil";
 import { CartDownArror } from "../icons/cartDownArrow";
 import { DoctorIcon } from "../icons/Doctor";
 import { Person } from "../icons/Person";
+import { AuthSafe } from "../StateManagement/user.state";
 
 export function Dashboard() {
+
+  const authState = useRecoilValue(AuthSafe);
+  console.log(authState.role)
+
+
   const card_data = {
     Representative: {
       count: 76,
@@ -37,7 +44,9 @@ export function Dashboard() {
 
       {/* Content */}
       <div className="p-3">
-        <h1 className="font-sans text-3xl ml-3">Welcome to MedTrackPro</h1>
+        <h1 className="font-sans text-3xl ml-3">{authState.role
+        ? `Welcome to MedTrackPro ${authState.role}`
+        : "Welcome to MedTrackPro Guest"}</h1>
         <div className="flex flex-wrap gap-8">
           {Object.keys(card_data).map((key) => {
             const typedKey = key as keyof typeof card_data;

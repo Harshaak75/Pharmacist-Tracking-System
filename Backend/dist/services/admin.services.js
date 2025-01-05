@@ -33,19 +33,18 @@ const Client = new client_1.PrismaClient();
 //   }
 // };
 // Representative data validation and push to database
-const CreateRepresentative = (_a) => __awaiter(void 0, [_a], void 0, function* ({ name, employeeid, email, bycrypt_password, phone_number, role = "representative", }) {
+const CreateRepresentative = (_a) => __awaiter(void 0, [_a], void 0, function* ({ name, employeeid, email, bycrypt_password, role = "representative", }) {
     try {
-        if (!name || !employeeid || !email || !bycrypt_password || !phone_number) {
+        if (!name || !employeeid || !email || !bycrypt_password) {
             throw new Error("Invalid input");
         }
-        console.log("in creating data", name, employeeid, email, bycrypt_password, phone_number);
-        const Representative = yield Client.representative.create({
+        console.log("in creating data", name, employeeid, email, bycrypt_password);
+        const Representative = yield Client.collection_of_models.create({
             data: {
                 name: name,
                 employeeid: employeeid,
                 email: email,
                 password: bycrypt_password,
-                phone_number: phone_number,
                 role: role,
             },
         });
