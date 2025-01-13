@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SubmitDailyActivity = exports.loginRepresentateive = void 0;
+exports.update_complaint = exports.get_complains = exports.Create_Complains = exports.SubmitDailyActivity = exports.loginRepresentateive = void 0;
 const express_validator_1 = require("express-validator");
 const representative_services_1 = require("../services/representative.services");
 const bcrypt_1 = __importDefault(require("bcrypt"));
@@ -61,3 +61,40 @@ const SubmitDailyActivity = (req, res, next) => __awaiter(void 0, void 0, void 0
     }
 });
 exports.SubmitDailyActivity = SubmitDailyActivity;
+const Create_Complains = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const error = (0, express_validator_1.validationResult)(req);
+    if (!error.isEmpty()) {
+        return res.status(400).json({ errors: error.array() });
+    }
+    try {
+        const { name, email, subject, message } = req.body;
+        // console.log(name, email, subject, message)
+        const complaints = yield (0, representative_services_1.createComplaints)({ name, email, subject, message });
+        res.status(200).json(complaints);
+    }
+    catch (error) {
+        res.status(401).json(error.message);
+    }
+});
+exports.Create_Complains = Create_Complains;
+const get_complains = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const listComplains = yield (0, representative_services_1.listofComplains)();
+        res.status(200).json(listComplains);
+    }
+    catch (error) {
+        res.status(401).json(error.message);
+    }
+});
+exports.get_complains = get_complains;
+const update_complaint = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { is_resolved, index } = req.body;
+        const Updated_complaints = yield (0, representative_services_1.UpdateComplaint)({ is_resolved, index });
+        res.status(200).json(Updated_complaints);
+    }
+    catch (error) {
+        res.status(401).json(error.message);
+    }
+});
+exports.update_complaint = update_complaint;

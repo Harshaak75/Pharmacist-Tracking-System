@@ -19,6 +19,7 @@ model collection_of_models {
   role String @default("reprentative")
   isActive   Boolean @default(true)
   created_at DateTime @default(now())
+  collection_of_models complains[]
 }
 
 model representative {
@@ -60,4 +61,17 @@ model activity {
   latitude            Float
   longitude           Float
   image_data          Bytes?   // Ensure this is correct
+}
+
+model complains {
+  id                  Int      @id @default(autoincrement())
+  representative_name String   @db.VarChar(50)
+  email String @db.VarChar(50)
+  subject String @db.VarChar(100)
+  message            String   @db.VarChar(255)
+  representative_id Int
+  is_resolved           Boolean  @default(false)
+  created_at          DateTime @default(now())
+
+  collection_of_models collection_of_models @relation(fields: [representative_id], references: [id])
 }

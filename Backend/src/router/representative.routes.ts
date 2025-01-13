@@ -1,6 +1,6 @@
 import express from "express";
 import {body} from "express-validator";
-import { loginRepresentateive, SubmitDailyActivity } from "../controller/representative.controller";
+import { Create_Complains, get_complains, loginRepresentateive, SubmitDailyActivity, update_complaint } from "../controller/representative.controller";
 import { create_doctor_account } from "../controller/admin.controller";
 
 const router = express.Router();
@@ -45,5 +45,18 @@ router.post("/create/DailyActivity",[
 ],
 SubmitDailyActivity,
 )
+
+router.post("/create/complain",[
+  body("name").notEmpty().withMessage("Enter name"),
+  body("email").isEmail().withMessage("Enter valid email"),
+  body("subject").notEmpty().withMessage("Subject"),
+  body("message").notEmpty().withMessage("Enter complain details"),
+],
+Create_Complains
+)
+
+router.get("/complains/list", get_complains)
+
+router.put("/complains/update", update_complaint)
 
 export default router;

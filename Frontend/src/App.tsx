@@ -10,6 +10,7 @@ import AdminCreate from "./components/AdminCreate";
 import LoginPage from "./pages/LoginPage";
 import { useRecoilState } from "recoil";
 import { AuthSafe } from "./StateManagement/user.state";
+import { AcceptReport } from "./pages/AcceptReport";
 
 function App() {
   const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
@@ -53,7 +54,8 @@ function App() {
           <Route path="Dashboard" element={<Dashboard />} />
           <Route path="Doctor-Details" element={<DoctorForm />} />
           <Route path="Representatives-Logs" element={<RepresentativeLogs />} />
-          <Route path="Contact" element={<Contact />} />
+          <Route path="Complaint" element={<Contact />} />
+          <Route path="Complaints-Log" element={<AcceptReport />} />
           <Route path="Reports" element={<Report />} />
         </Route>
         {/* <Route path='Logout' element={<AdminCreate/>} /> */}

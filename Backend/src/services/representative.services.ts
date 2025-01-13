@@ -62,6 +62,95 @@ export const createActivity = async ({representative_name, doctor_name,product_n
     }
 }
 
+interface Complaint {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+  }
 
+
+export const findId = async ({email}: any) =>{
+    if(!email){
+        throw new Error("Email is required");
+    }
+
+    const _id = await Client.representative.findUnique({where: {email: email}, select: {id: true}})
+
+    return _id;
+}
+
+
+
+
+export const createComplaints = async ({name, email, subject, message}: Complaint) =>{
+    if(!name ||!email ||!subject ||!message){
+        throw new Error("Invalid input");
+    }
+
+    try {
+
+        // console.log(name, email, subject, message)
+
+        const _id = await Client.collection_of_models.findUnique({where: {email: email}, select: {id: true}})
+
+        console.log(_id)
+
+        if(!_id){
+            throw new Error("No representative found with this email");
+        }
+
+        const representative_id = _id.id;
+
+        console.log(representative_id)
+        const complains = await Client.complains.create({
+            data: {
+                representative_name: name,
+                email: email,
+                subject: subject,
+                message: message,
+                representative_id: representative_id,
+            }
+        })
+
+        return complains;
+        
+    } catch (error: any) {
+        return error;
+    }
+    
+}
+
+export const listofComplains = async () =>{
+    try {
+        const listComplains = await Client.complains.findMany()
+
+        return listComplains;
+    } catch (error:any) {
+        return error;
+    }
+}
+
+interface Update {
+    is_resolved : boolean,
+    index: number
+}
+
+export const UpdateComplaint = async ({is_resolved, index}: Update) =>{
+    try {
+       const UpdatedComplaint = await Client.complains.update({
+        where: {
+            id: index,
+        },
+        data: {
+            is_resolved: is_resolved,
+        }
+       }) 
+
+       return UpdatedComplaint
+    } catch (error: any) {
+        return error
+    }
+}
 
 

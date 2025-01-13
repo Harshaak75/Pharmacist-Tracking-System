@@ -37,4 +37,12 @@ router.post("/create/DailyActivity", [
     (0, express_validator_1.body)("longitude").notEmpty().withMessage("Enter longitude"),
     (0, express_validator_1.body)("image").notEmpty().withMessage("Upload Image "),
 ], representative_controller_1.SubmitDailyActivity);
+router.post("/create/complain", [
+    (0, express_validator_1.body)("name").notEmpty().withMessage("Enter name"),
+    (0, express_validator_1.body)("email").isEmail().withMessage("Enter valid email"),
+    (0, express_validator_1.body)("subject").notEmpty().withMessage("Subject"),
+    (0, express_validator_1.body)("message").notEmpty().withMessage("Enter complain details"),
+], representative_controller_1.Create_Complains);
+router.get("/complains/list", representative_controller_1.get_complains);
+router.put("/complains/update", representative_controller_1.update_complaint);
 exports.default = router;

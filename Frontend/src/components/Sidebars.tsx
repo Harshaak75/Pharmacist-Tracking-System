@@ -3,11 +3,12 @@ import { Mainlogo } from "../icons/Mainlogo";
 import { SidebarItems } from "./sidebar.items";
 import { useNavigate } from "react-router-dom";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { AuthSafe } from "../StateManagement/user.state";
 
 export function Sidebars() {
   const navigate = useNavigate();
+  const authState = useRecoilValue(AuthSafe);
 
   const setAuthState = useSetRecoilState(AuthSafe);
 
@@ -18,10 +19,11 @@ export function Sidebars() {
 
   const sidebarItems = [
     "Dashboard",
-    "Representatives Logs",
+    ...(authState.role === "representative" ? ["Representatives Logs"] : []),
     "Doctor Details",
     "Reports",
-    "Contact",
+    // "Contact",
+    ...(authState.role == "admin" ? ["Complaints Log"] : ["Complaint"]),
     "Logout",
   ];
 

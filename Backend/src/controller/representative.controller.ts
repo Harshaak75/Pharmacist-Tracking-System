@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
-import { createActivity, isRepresentaivePresent } from "../services/representative.services";
+import { createActivity, createComplaints, findId, isRepresentaivePresent, listofComplains, UpdateComplaint } from "../services/representative.services";
 import bcrypt from "bcrypt"
 
 
@@ -62,5 +62,46 @@ export const SubmitDailyActivity = async (req: Request, res: Response, next: Nex
     res.status(200).json(Activity);
   } catch (error: any) {
     res.status(500).json(error.message);
+  }
+}
+
+export const Create_Complains = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const error = validationResult(req);
+  if (!error.isEmpty()) {
+    return res.status(400).json({ errors: error.array() });
+  }
+
+  try {
+    const {name, email, subject, message} = req.body; 
+
+    // console.log(name, email, subject, message)
+
+    const complaints = await createComplaints({name, email, subject, message});
+
+    res.status(200).json(complaints);
+
+  } catch (error: any) {
+    res.status(401).json(error.message)
+  }
+}
+
+export const get_complains = async (req: Request, res: Response, next: NextFunction): Promise<any> =>{
+  try {
+    const listComplains = await listofComplains();
+
+    res.status(200).json(listComplains);
+  } catch (error:any) {
+    res.status(401).json(error.message)
+  }
+}
+
+export const update_complaint = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  try {
+
+    const {is_resolved, index} = req.body;
+    const Updated_complaints = await UpdateComplaint({is_resolved, index});
+    res.status(200).json(Updated_complaints);
+  } catch (error: any) {
+    res.status(401).json(error.message)
   }
 }

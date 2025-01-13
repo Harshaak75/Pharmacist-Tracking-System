@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createActivity = exports.isRepresentaivePresent = void 0;
+exports.UpdateComplaint = exports.listofComplains = exports.createComplaints = exports.findId = exports.createActivity = exports.isRepresentaivePresent = void 0;
 const client_1 = require("@prisma/client");
 const Client = new client_1.PrismaClient();
 // logic to query the database for representative present or not
@@ -57,3 +57,67 @@ const createActivity = (_a) => __awaiter(void 0, [_a], void 0, function* ({ repr
     }
 });
 exports.createActivity = createActivity;
+const findId = (_a) => __awaiter(void 0, [_a], void 0, function* ({ email }) {
+    if (!email) {
+        throw new Error("Email is required");
+    }
+    const _id = yield Client.representative.findUnique({ where: { email: email }, select: { id: true } });
+    return _id;
+});
+exports.findId = findId;
+const createComplaints = (_a) => __awaiter(void 0, [_a], void 0, function* ({ name, email, subject, message }) {
+    if (!name || !email || !subject || !message) {
+        throw new Error("Invalid input");
+    }
+    try {
+        // console.log(name, email, subject, message)
+        const _id = yield Client.collection_of_models.findUnique({ where: { email: email }, select: { id: true } });
+        console.log(_id);
+        if (!_id) {
+            throw new Error("No representative found with this email");
+        }
+        const representative_id = _id.id;
+        console.log(representative_id);
+        const complains = yield Client.complains.create({
+            data: {
+                representative_name: name,
+                email: email,
+                subject: subject,
+                message: message,
+                representative_id: representative_id,
+            }
+        });
+        return complains;
+    }
+    catch (error) {
+        return error;
+    }
+});
+exports.createComplaints = createComplaints;
+const listofComplains = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const listComplains = yield Client.complains.findMany();
+        return listComplains;
+    }
+    catch (error) {
+        return error;
+    }
+});
+exports.listofComplains = listofComplains;
+const UpdateComplaint = (_a) => __awaiter(void 0, [_a], void 0, function* ({ is_resolved, index }) {
+    try {
+        const UpdatedComplaint = yield Client.complains.update({
+            where: {
+                id: index,
+            },
+            data: {
+                is_resolved: is_resolved,
+            }
+        });
+        return UpdatedComplaint;
+    }
+    catch (error) {
+        return error;
+    }
+});
+exports.UpdateComplaint = UpdateComplaint;

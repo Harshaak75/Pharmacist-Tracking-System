@@ -47,7 +47,7 @@ export function Dashboard() {
         <h1 className="font-sans text-3xl ml-3">{authState.role
         ? `Welcome to MedTrackPro ${authState.role}`
         : "Welcome to MedTrackPro Guest"}</h1>
-        <div className="flex flex-wrap gap-8">
+        {authState.role == "admin" ? <div className="flex flex-wrap gap-8">
           {Object.keys(card_data).map((key) => {
             const typedKey = key as keyof typeof card_data;
             return (
@@ -65,7 +65,7 @@ export function Dashboard() {
               </div>
             );
           })}
-        </div>
+        </div>: <></>}
       </div>
     </div>
   );
