@@ -3,7 +3,7 @@ import { Button } from "../components/Button";
 import { Input } from "../components/input";
 import { AuthSafe } from "../StateManagement/user.state";
 import { AcceptReport } from "./AcceptReport";
-import { HTMLAttributes, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import axios from "axios";
 import { backend_url } from "../config";
 
